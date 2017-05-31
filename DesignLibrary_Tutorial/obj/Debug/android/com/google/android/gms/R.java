@@ -3472,7 +3472,6 @@ containing a value of this type.
         public static final int Animation_AppCompat_Dialog=0x7f0b00a5;
         public static final int Animation_AppCompat_DropDownUp=0x7f0b00a6;
         public static final int Animation_Design_BottomSheetDialog=0x7f0b0165;
-        public static final int AppTheme=0x7f0b0184;
         public static final int Base_AlertDialog_AppCompat=0x7f0b00a7;
         public static final int Base_AlertDialog_AppCompat_Light=0x7f0b00a8;
         public static final int Base_Animation_AppCompat_Dialog=0x7f0b00a9;
@@ -3632,6 +3631,11 @@ containing a value of this type.
         public static final int CardView=0x7f0b0000;
         public static final int CardView_Dark=0x7f0b0002;
         public static final int CardView_Light=0x7f0b0003;
+        /** <style name="Theme.DesignDemo.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+  <style name="Theme.DesignDemo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+         */
+        public static final int MyTheme=0x7f0b0182;
         public static final int Platform_AppCompat=0x7f0b0022;
         public static final int Platform_AppCompat_Light=0x7f0b0023;
         public static final int Platform_ThemeOverlay_AppCompat=0x7f0b0089;
@@ -3760,8 +3764,6 @@ containing a value of this type.
         public static final int Theme_Design_Light_NoActionBar=0x7f0b0173;
         public static final int Theme_Design_NoActionBar=0x7f0b0174;
         public static final int Theme_DesignDemo=0x7f0b017e;
-        public static final int Theme_DesignDemo_AppBarOverlay=0x7f0b0182;
-        public static final int Theme_DesignDemo_PopupOverlay=0x7f0b0183;
         public static final int Theme_DesignDemo2=0x7f0b017f;
         public static final int ThemeOverlay_AppCompat=0x7f0b0114;
         public static final int ThemeOverlay_AppCompat_ActionBar=0x7f0b0115;

@@ -15,4 +15,6 @@
     <item name="colorPrimaryDark">@android:color/transparent</item>
     <item name="colorAccent">#FF4081</item>
   </style>
+
+
 </resources>

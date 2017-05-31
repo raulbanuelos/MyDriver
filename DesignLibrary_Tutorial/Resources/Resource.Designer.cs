@@ -3601,9 +3601,6 @@ namespace DesignLibrary_Tutorial
 			// aapt resource value: 0x7f0b0165
 			public const int Animation_Design_BottomSheetDialog = 2131427685;
 			
-			// aapt resource value: 0x7f0b0184
-			public const int AppTheme = 2131427716;
-			
 			// aapt resource value: 0x7f0b00a7
 			public const int Base_AlertDialog_AppCompat = 2131427495;
 			
@@ -4081,6 +4078,9 @@ namespace DesignLibrary_Tutorial
 			// aapt resource value: 0x7f0b0003
 			public const int CardView_Light = 2131427331;
 			
+			// aapt resource value: 0x7f0b0182
+			public const int MyTheme = 2131427714;
+			
 			// aapt resource value: 0x7f0b0022
 			public const int Platform_AppCompat = 2131427362;
 			
@@ -4464,12 +4464,6 @@ namespace DesignLibrary_Tutorial
 			
 			// aapt resource value: 0x7f0b017e
 			public const int Theme_DesignDemo = 2131427710;
-			
-			// aapt resource value: 0x7f0b0182
-			public const int Theme_DesignDemo_AppBarOverlay = 2131427714;
-			
-			// aapt resource value: 0x7f0b0183
-			public const int Theme_DesignDemo_PopupOverlay = 2131427715;
 			
 			// aapt resource value: 0x7f0b017f
 			public const int Theme_DesignDemo2 = 2131427711;

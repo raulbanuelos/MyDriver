@@ -1,29 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Gms.Maps;
-using Org.Xml.Sax;
 using Plugin.Geolocator;
-using Plugin.Geolocator.Abstractions;
 using DesignLibrary_Tutorial.Models;
 using DesignLibrary_Tutorial.Services;
-using Android.Database;
 using Android.Support.Design.Widget;
 using Android.Support.V4.Widget;
-using Android.Support.V7.Widget;
 using Android.Support.V7.App;
 
 namespace DesignLibrary_Tutorial
 {
-    [Activity(Label = "MiMapa")]
+    [Activity(Label = "MiMapa", MainLauncher = true)]
     public class MiMapa : AppCompatActivity, IOnMapReadyCallback
     {
         private GoogleMap mMap;
