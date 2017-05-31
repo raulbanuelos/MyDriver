@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="DesignLibrary_Tutorial.DesignLibrary_Tutorial" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="17" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<application android:label="Mi Taxi Pixie">
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyD7xkewXgYq_sU1dHkbBRc8cl7HJh4_I-c" />
+		<!--<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />-->
+	</application>
+</manifest>
