@@ -16,19 +16,19 @@ namespace DesignLibrary_Tutorial
     [Activity(Label = "MiMapa", MainLauncher = true)]
     public class MiMapa : AppCompatActivity, IOnMapReadyCallback
     {
+        #region Attributes
         private GoogleMap mMap;
-
+        private bool banGetPedidosAsignados;
         ApiService WebService;
         Connection cnn;
         User usuario;
-
-        DrawerLayout drawerLayout;
+        DrawerLayout drawerLayout; 
+        #endregion
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.MiMapa);
-
 
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 
@@ -141,9 +141,9 @@ namespace DesignLibrary_Tutorial
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 50;
             var position = await locator.GetPositionAsync(timeoutMilliseconds: 10000);
-            //UpdateLocation();
-
+            UpdateLocation();
             mMap.MyLocationEnabled = true;
+            banGetPedidosAsignados = true;
             GetPedidosAsignados();
         }
 
@@ -162,21 +162,27 @@ namespace DesignLibrary_Tutorial
         private async void GetPedidosAsignados()
         {
             RequestPixie r = new RequestPixie();
-            while (true)
+
+            while (banGetPedidosAsignados)
             {
                 r = await WebService.GetPedidosAsignados(usuario.IdNegocio);
+
                 if (r.Code == 1)
                 {
                     Android.App.AlertDialog.Builder alert = new Android.App.AlertDialog.Builder(this);
 
                     alert.SetTitle("Nuevo Servicio");
 
-                    alert.SetPositiveButton("Aceptar", (senderAlert, args) => {
-                        //change value write your own set of instructions
-                        //you can also create an event for the same in xamarin
-                        //instead of writing things here
-
-                        string a = "Acepto";
+                    alert.SetPositiveButton("Aceptar", async (senderAlert, args) =>
+                    {
+                        //Aceptar Pedido
+                        RequestPixie rAceptar = new RequestPixie();
+                        rAceptar = await WebService.SetAceptarPedido(usuario.IdNegocio, (int)r.Data);
+                        if (rAceptar.Code == 1)
+                        {
+                            banGetPedidosAsignados = false;
+                        }
+                        
                     });
 
                     alert.SetNegativeButton("Cancelar", (senderAlert, args) => {
@@ -185,12 +191,11 @@ namespace DesignLibrary_Tutorial
                     });
                     //run the alert in UI thread to display in the screen
                     RunOnUiThread(() => {
+                        banGetPedidosAsignados = false;
                         alert.Show();
                     });
                 }
             }
-                
-           
         }
     }
 }

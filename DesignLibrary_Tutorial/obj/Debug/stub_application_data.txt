@@ -1,2 +1,0 @@
-android.app.Application
-DesignLibrary_Tutorial.DesignLibrary_Tutorial
