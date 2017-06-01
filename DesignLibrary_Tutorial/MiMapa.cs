@@ -47,18 +47,7 @@ namespace DesignLibrary_Tutorial
             var drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, Resource.String.open_drawer, Resource.String.close_drawer);
             drawerLayout.SetDrawerListener(drawerToggle);
             drawerToggle.SyncState();
-
-            //load default home screen
-            var ft = FragmentManager.BeginTransaction();
-            ft.AddToBackStack(null);
-            ft.Add(Resource.Id.HomeFrameLayout, new HomeFragment());
-            ft.Commit();
-            // drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-
-
-
-
-
+            
             WebService = new ApiService();
             cnn = new Connection(this);
 
@@ -152,8 +141,10 @@ namespace DesignLibrary_Tutorial
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 50;
             var position = await locator.GetPositionAsync(timeoutMilliseconds: 10000);
-            UpdateLocation();
+            //UpdateLocation();
+
             mMap.MyLocationEnabled = true;
+            GetPedidosAsignados();
         }
 
         private async void UpdateLocation()
@@ -166,6 +157,40 @@ namespace DesignLibrary_Tutorial
                 var location = await locator.GetPositionAsync(timeoutMilliseconds: 10000);
                 r = await WebService.SetActualPosition(location.Latitude, location.Longitude, usuario.IdNegocio);
             }
+        }
+
+        private async void GetPedidosAsignados()
+        {
+            RequestPixie r = new RequestPixie();
+            while (true)
+            {
+                r = await WebService.GetPedidosAsignados(usuario.IdNegocio);
+                if (r.Code == 1)
+                {
+                    Android.App.AlertDialog.Builder alert = new Android.App.AlertDialog.Builder(this);
+
+                    alert.SetTitle("Nuevo Servicio");
+
+                    alert.SetPositiveButton("Aceptar", (senderAlert, args) => {
+                        //change value write your own set of instructions
+                        //you can also create an event for the same in xamarin
+                        //instead of writing things here
+
+                        string a = "Acepto";
+                    });
+
+                    alert.SetNegativeButton("Cancelar", (senderAlert, args) => {
+                        //perform your own task for this conditional button click
+                        string a = "Cancelo";
+                    });
+                    //run the alert in UI thread to display in the screen
+                    RunOnUiThread(() => {
+                        alert.Show();
+                    });
+                }
+            }
+                
+           
         }
     }
 }

@@ -80,18 +80,20 @@ namespace DesignLibrary_Tutorial.Services
         {
             try
             {
-                var url = "http://74.208.227.248:80/PixieAPI/api/Negocio/VerificarPedidosAsignados/" + idNegocio;
-                var webrequest = (HttpWebRequest)System.Net.WebRequest.Create(url);
-                using (var response = await webrequest.GetResponseAsync())
-                using (var reader = new StreamReader(response.GetResponseStream()))
+                var url = "http://74.208.227.248/PixieAPI/api/Negocio/VerificarPedidosAsignados/" + idNegocio;
+                var webrequest1 = (HttpWebRequest)System.Net.WebRequest.Create(url);
+                using (var response1 = await webrequest1.GetResponseAsync())
+                using (var reader1 = new StreamReader(response1.GetResponseStream()))
                 {
-                    var result = reader.ReadToEnd();
-                    RequestPixie obj = JsonConvert.DeserializeObject<RequestPixie>(result.Substring(1, result.Length - 2));
+                    var result1 = reader1.ReadToEnd();
+                    RequestPixie obj1 = JsonConvert.DeserializeObject<RequestPixie>(result1.Substring(1, result1.Length - 2));
                     return new RequestPixie
                     {
                         IsSuccess = true,
-                        Message = obj.Message,
-                        Data = obj
+                        Message = obj1.Message,
+                        Data = obj1,
+                        Code = obj1.Code
+                        
                     };
                 }
             }
@@ -110,7 +112,7 @@ namespace DesignLibrary_Tutorial.Services
         {
             try
             {
-                var url = "http://74.208.227.248:80/PixieAPI/api/Negocio/AceptarPedido/" + idNegocio + "/" + idPedido;
+                var url = "http://74.208.227.248/PixieAPI/api/Negocio/AceptarPedido/" + idNegocio + "/" + idPedido;
                 var webrequest = (HttpWebRequest)System.Net.WebRequest.Create(url);
                 using (var response = await webrequest.GetResponseAsync())
                 using (var reader = new StreamReader(response.GetResponseStream()))
@@ -140,7 +142,7 @@ namespace DesignLibrary_Tutorial.Services
         {
             try
             {
-                var url = "http://74.208.227.248:80/PixieAPI/api/Negocio/IniciarServicio/" + idNegocio + "/" + idPedido;
+                var url = "http://74.208.227.248/PixieAPI/api/Negocio/IniciarServicio/" + idNegocio + "/" + idPedido;
                 var webrequest = (HttpWebRequest)System.Net.WebRequest.Create(url);
                 using (var response = await webrequest.GetResponseAsync())
                 using (var reader = new StreamReader(response.GetResponseStream()))
