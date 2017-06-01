@@ -75,5 +75,96 @@ namespace DesignLibrary_Tutorial.Services
                 };
             }
         }
+
+        public async Task<RequestPixie> GetPedidosAsignados(int idNegocio)
+        {
+            try
+            {
+                var url = "http://74.208.227.248:80/PixieAPI/api/Negocio/VerificarPedidosAsignados/" + idNegocio;
+                var webrequest = (HttpWebRequest)System.Net.WebRequest.Create(url);
+                using (var response = await webrequest.GetResponseAsync())
+                using (var reader = new StreamReader(response.GetResponseStream()))
+                {
+                    var result = reader.ReadToEnd();
+                    RequestPixie obj = JsonConvert.DeserializeObject<RequestPixie>(result.Substring(1, result.Length - 2));
+                    return new RequestPixie
+                    {
+                        IsSuccess = true,
+                        Message = obj.Message,
+                        Data = obj
+                    };
+                }
+            }
+            catch (Exception er)
+            {
+                return new RequestPixie
+                {
+                    IsSuccess = false,
+                    Message = er.Message,
+
+                };
+            }
+        }
+
+        public async Task<RequestPixie> SetAceptarPedido(int idNegocio, int idPedido)
+        {
+            try
+            {
+                var url = "http://74.208.227.248:80/PixieAPI/api/Negocio/AceptarPedido/" + idNegocio + "/" + idPedido;
+                var webrequest = (HttpWebRequest)System.Net.WebRequest.Create(url);
+                using (var response = await webrequest.GetResponseAsync())
+                using (var reader = new StreamReader(response.GetResponseStream()))
+                {
+                    var result = reader.ReadToEnd();
+                    RequestPixie obj = JsonConvert.DeserializeObject<RequestPixie>(result.Substring(1, result.Length - 2));
+                    return new RequestPixie
+                    {
+                        IsSuccess = true,
+                        Message = obj.Message,
+                        Data = obj
+                    };
+                }
+            }
+            catch (Exception er)
+            {
+                return new RequestPixie
+                {
+                    IsSuccess = false,
+                    Message = er.Message,
+
+                };
+            }
+        }
+
+        public async Task<RequestPixie> SetInciarViaje(int idNegocio, int idPedido)
+        {
+            try
+            {
+                var url = "http://74.208.227.248:80/PixieAPI/api/Negocio/IniciarServicio/" + idNegocio + "/" + idPedido;
+                var webrequest = (HttpWebRequest)System.Net.WebRequest.Create(url);
+                using (var response = await webrequest.GetResponseAsync())
+                using (var reader = new StreamReader(response.GetResponseStream()))
+                {
+                    var result = reader.ReadToEnd();
+                    RequestPixie obj = JsonConvert.DeserializeObject<RequestPixie>(result.Substring(1, result.Length - 2));
+                    return new RequestPixie
+                    {
+                        IsSuccess = true,
+                        Message = obj.Message,
+                        Data = obj
+                    };
+                }
+            }
+            catch (Exception er)
+            {
+                return new RequestPixie
+                {
+                    IsSuccess = false,
+                    Message = er.Message,
+
+                };
+            }
+        }
+
     }
 }

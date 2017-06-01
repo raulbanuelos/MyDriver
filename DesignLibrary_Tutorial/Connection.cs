@@ -30,7 +30,8 @@ namespace DesignLibrary_Tutorial
 
         public override void OnCreate(SQLiteDatabase db)
         {
-            db.ExecSQL("DELETE FROM " + TABLE);
+            //db.ExecSQL("DELETE FROM " + TABLE);
+            db.ExecSQL("DELETE FROM " + TABLE + " IF EXISTS");
             db.ExecSQL("CREATE TABLE " + TABLE + " (" + ID_USUARIO + " INTEGER PRIMARY KEY," + USUARIO + " TEXT, " + PASSWORD + " TEXT," + NOMBRE + " TEXT," + APELLIDO_PATERNO + " TEXT," + APELLIDO_MATERNO + " TEXT," + FECHA_NACIMIENTO + " TEXT," + IsRemembered + " INTEGER," + IdNegocio + " INTEGER)");
         }
 
